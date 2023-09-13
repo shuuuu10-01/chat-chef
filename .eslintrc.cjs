@@ -28,7 +28,7 @@ module.exports = {
           // TODO：ここはディレクトリ構成が決まり次第設定
           // styles
           // 最後尾にしたいのでgroupをindex扱いにする
-          { pattern: './**.module.css', group: 'index', position: 'before' },
+          { pattern: './**.module.scss', group: 'index', position: 'before' },
         ],
       },
     ],
