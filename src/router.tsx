@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Login from './pages/Login';
+import Login from 'src/pages/Login';
 
 const CustomRouter: FC = () => {
   return (
