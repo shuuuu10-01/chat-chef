@@ -5,6 +5,7 @@
     "stylelint-prettier"
   ],
   "plugins": [
-    "stylelint-order"
+    "stylelint-order",
+    "stylelint-scss"
   ]
 }
