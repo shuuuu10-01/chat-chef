@@ -7,32 +7,26 @@ import {
   Heading,
   Input,
 } from '@chakra-ui/react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { auth } from 'src/plugins/firebase';
+
+import { LoginFormData } from 'src/types/auth';
+
+import useLogin from './useLogin';
 
 import styles from './styles.module.scss';
-
-type FormData = {
-  email: string;
-  password: string;
-};
 
 const Login: FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting, errors },
-  } = useForm<FormData>();
+    formState: { errors },
+  } = useForm<LoginFormData>();
 
-  const submit: SubmitHandler<FormData> = (data) => {
-    return new Promise((resolve) => {
-      signInWithEmailAndPassword(auth, data.email, data.password).then((result) => {
-        console.log(result);
-        resolve(() => {});
-      });
-    });
+  const { login, isLoading } = useLogin();
+
+  const submit: SubmitHandler<LoginFormData> = (data) => {
+    login(data);
   };
 
   return (
@@ -63,7 +57,7 @@ const Login: FC = () => {
           />
           <FormErrorMessage mt={1}>{!!errors.password && errors.password.message}</FormErrorMessage>
         </FormControl>
-        <Button colorScheme="blue" isLoading={isSubmitting} type="submit">
+        <Button colorScheme="blue" isLoading={isLoading} type="submit">
           ログイン
         </Button>
       </form>
