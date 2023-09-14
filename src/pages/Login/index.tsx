@@ -7,8 +7,10 @@ import {
   Heading,
   Input,
 } from '@chakra-ui/react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { auth } from 'src/plugins/firebase';
 
 import styles from './styles.module.scss';
 
@@ -26,10 +28,10 @@ const Login: FC = () => {
 
   const submit: SubmitHandler<FormData> = (data) => {
     return new Promise((resolve) => {
-      setTimeout(() => {
-        alert(JSON.stringify(data, null, 2));
+      signInWithEmailAndPassword(auth, data.email, data.password).then((result) => {
+        console.log(result);
         resolve(() => {});
-      }, 500);
+      });
     });
   };
 
