@@ -13,7 +13,8 @@
   "cSpell.ignoreRegExpList": [
     "[０-９Ａ-Ｚａ-ｚぁ-んァ-ヶ亜-熙纊-黑]+",
     "stylelint",
-    "tailwindcss"
+    "tailwindcss",
+    "chakra"
   ],
   "typescript.preferences.importModuleSpecifier": "non-relative"
 }

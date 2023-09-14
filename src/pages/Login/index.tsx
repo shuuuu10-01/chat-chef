@@ -1,5 +1,16 @@
+import {
+  Button,
+  Flex,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Heading,
+  Input,
+} from '@chakra-ui/react';
 import { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+
+import styles from './styles.module.scss';
 
 type FormData = {
   email: string;
@@ -7,43 +18,54 @@ type FormData = {
 };
 
 const Login: FC = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = useForm<FormData>();
 
   const submit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        alert(JSON.stringify(data, null, 2));
+        resolve(() => {});
+      }, 500);
+    });
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      <h1 className="font-bold text-3xl pb-9">Chat Chef</h1>
-      <form className="w-4/5 mx-auto text-center" onSubmit={handleSubmit(submit)}>
-        <div className="my-4 text-left">
-          <label htmlFor="email" className="mb-1 text-sm block text-gray-800">
+    <Flex
+      height={'100dvh'}
+      alignItems={'center'}
+      justifyContent={'center'}
+      flexDirection={'column'}>
+      <Heading mb={8}>Chat Chef</Heading>
+      <form className={styles.form} onSubmit={handleSubmit(submit)}>
+        <FormControl mb={4} isInvalid={!!errors.email} textAlign={'start'}>
+          <FormLabel mb={1} htmlFor="email">
             メールアドレス
-          </label>
-          <input
+          </FormLabel>
+          <Input
             id="email"
             type="email"
-            className="border border-gray-300 focus:outline-gray-500 rounded w-full h-8 p-3 text-sm"
-            {...register('email', { required: true })}
+            {...register('email', { required: 'メールアドレスを入力してください' })}
           />
-        </div>
-        <div className="my-4  text-left">
-          <label htmlFor="password" className="mb-1 text-sm block text-gray-800">
-            パスワード
-          </label>
-          <input
+          <FormErrorMessage mt={1}>{!!errors.email && errors.email.message}</FormErrorMessage>
+        </FormControl>
+        <FormControl mb={6} isInvalid={!!errors.password}>
+          <FormLabel mb={1}>パスワード</FormLabel>
+          <Input
             id="password"
             type="password"
-            className="border border-gray-300 focus:outline-gray-500 rounded w-full h-8 p-3 text-sm"
-            {...register('password', { required: true })}
+            {...register('password', { required: 'パスワードを入力してください' })}
           />
-        </div>
-        <button className="mt-4 px-6 py-2 rounded bg-gray-500 hover:bg-gray-600 text-white border-gray-700 mx-1">
+          <FormErrorMessage mt={1}>{!!errors.password && errors.password.message}</FormErrorMessage>
+        </FormControl>
+        <Button colorScheme="blue" isLoading={isSubmitting} type="submit">
           ログイン
-        </button>
+        </Button>
       </form>
-    </div>
+    </Flex>
   );
 };
 
