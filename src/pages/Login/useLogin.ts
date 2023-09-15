@@ -2,8 +2,7 @@ import { useToast } from '@chakra-ui/react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useCallback, useEffect, useState } from 'react';
 import { auth } from 'src/plugins/firebase';
-import { actions } from 'src/store';
-import { useAppDispatch } from 'src/store/hooks';
+import { actions, useAppDispatch } from 'src/store';
 
 import { LoginFormData } from 'src/types/auth';
 
@@ -28,6 +27,7 @@ const useLogin = () => {
         );
       } catch {
         setHasError(true);
+        throw Error('ログインに失敗しました');
       } finally {
         setLoading(false);
       }

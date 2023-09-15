@@ -3,8 +3,7 @@ import { FC, ReactNode, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { auth } from 'src/plugins/firebase';
-import { actions, selectors } from 'src/store';
-import { useAppSelector } from 'src/store/hooks';
+import { actions, selectors, useAppSelector } from 'src/store';
 
 const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [isLoading, setLoading] = useState(true);
