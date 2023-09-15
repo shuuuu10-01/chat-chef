@@ -10,9 +10,9 @@ const CustomRouter: FC = () => {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<Top />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Top />} />
+          <Route path='/' element={<Top />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='*' element={<Top />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
