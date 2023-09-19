@@ -19,7 +19,7 @@ const SelectedItem: FC = () => {
   const fish = selected.filter((s) => s.categoryId === CATEGORY.FISH);
 
   return (
-    <Card width='95%' mx='auto' mt='8'>
+    <Card mx='auto' mt='8'>
       <CardHeader pb='0'>
         <Heading fontWeight='bold' size='sm' color='gray'>
           選択中の材料
