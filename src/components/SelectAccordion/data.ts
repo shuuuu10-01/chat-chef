@@ -1,15 +1,19 @@
-import { FaFishFins } from 'react-icons/fa6';
-import { GiChicken, GiCow, GiPig } from 'react-icons/gi';
-
-import { CategoryData, CategoryName, CATEGORY } from 'src/types/category';
+import {
+  CategoryData,
+  CategoryName,
+  CATEGORY,
+  CategoryIcon,
+  CategoryColor,
+  CategoryIconColor,
+} from 'src/types/category';
 
 export const ACCORDION_DATA: CategoryData = [
   {
     categoryName: CategoryName[CATEGORY.PIG],
     categoryId: CATEGORY.PIG,
-    icon: GiPig,
-    color: 'pink',
-    iconColor: '#ED64A6',
+    icon: CategoryIcon[CATEGORY.PIG],
+    color: CategoryColor[CATEGORY.PIG],
+    iconColor: CategoryIconColor[CATEGORY.PIG],
     items: [
       {
         id: 1,
@@ -28,9 +32,9 @@ export const ACCORDION_DATA: CategoryData = [
   {
     categoryName: CategoryName[CATEGORY.CHICKEN],
     categoryId: CATEGORY.CHICKEN,
-    icon: GiChicken,
-    color: 'red',
-    iconColor: 'red',
+    icon: CategoryIcon[CATEGORY.CHICKEN],
+    color: CategoryColor[CATEGORY.CHICKEN],
+    iconColor: CategoryIconColor[CATEGORY.CHICKEN],
     items: [
       {
         id: 1,
@@ -53,9 +57,9 @@ export const ACCORDION_DATA: CategoryData = [
   {
     categoryName: CategoryName[CATEGORY.BEEF],
     categoryId: CATEGORY.BEEF,
-    icon: GiCow,
-    color: 'blackAlpha',
-    iconColor: 'black',
+    icon: CategoryIcon[CATEGORY.BEEF],
+    color: CategoryColor[CATEGORY.BEEF],
+    iconColor: CategoryIconColor[CATEGORY.BEEF],
     items: [
       {
         id: 1,
@@ -74,9 +78,9 @@ export const ACCORDION_DATA: CategoryData = [
   {
     categoryName: CategoryName[CATEGORY.FISH],
     categoryId: CATEGORY.FISH,
-    icon: FaFishFins,
-    color: 'blue',
-    iconColor: '#2b6cb0',
+    icon: CategoryIcon[CATEGORY.FISH],
+    color: CategoryColor[CATEGORY.FISH],
+    iconColor: CategoryIconColor[CATEGORY.FISH],
     items: [
       {
         id: 1,
