@@ -19,10 +19,12 @@ const useLogin = () => {
       setHasError(false);
       try {
         const { user } = await signInWithEmailAndPassword(auth, data.email, data.password);
+        const { claims } = await user.getIdTokenResult();
         dispatch(
           actions.user.updateUser({
             id: user.uid,
             email: user.email!,
+            isAdmin: !!claims.admin,
           }),
         );
       } catch {

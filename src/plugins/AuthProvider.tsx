@@ -1,5 +1,5 @@
-import { onAuthStateChanged } from 'firebase/auth';
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { User, onAuthStateChanged } from 'firebase/auth';
+import { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { auth } from 'src/plugins/firebase';
@@ -13,22 +13,28 @@ const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const observer = useCallback(
+    async (currentUser: User | null) => {
+      if (currentUser === null) return navigate('/login');
+
+      const { claims } = await currentUser.getIdTokenResult();
+      dispatch(
+        actions.user.updateUser({
+          id: currentUser.uid,
+          email: currentUser.email!,
+          isAdmin: !!claims.admin,
+        }),
+      );
+
+      setLoading(false);
+    },
+    [dispatch, navigate],
+  );
+
   useEffect(() => {
     if (isLogin) return;
-    onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        dispatch(
-          actions.user.updateUser({
-            id: currentUser.uid,
-            email: currentUser.email!,
-          }),
-        );
-      } else {
-        navigate('/login');
-      }
-      setLoading(false);
-    });
-  }, [isLogin, dispatch, navigate]);
+    return onAuthStateChanged(auth, observer);
+  }, [isLogin, observer]);
 
   return <>{isLoading ? null : children}</>;
 };
