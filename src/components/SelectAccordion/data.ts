@@ -1,23 +1,12 @@
-import { IconType } from 'react-icons';
 import { FaFishFins } from 'react-icons/fa6';
 import { GiChicken, GiCow, GiPig } from 'react-icons/gi';
 
-type AccordionData = {
-  categoryName: string;
-  categoryId: number;
-  icon: IconType;
-  color: string;
-  iconColor: string;
-  items: {
-    id: number;
-    label: string;
-  }[];
-}[];
+import { CategoryData, CategoryName, CATEGORY } from 'src/types/category';
 
-export const ACCORDION_DATA: AccordionData = [
+export const ACCORDION_DATA: CategoryData = [
   {
-    categoryName: 'ぶた肉',
-    categoryId: 1,
+    categoryName: CategoryName[CATEGORY.PIG],
+    categoryId: CATEGORY.PIG,
     icon: GiPig,
     color: 'pink',
     iconColor: '#ED64A6',
@@ -37,8 +26,8 @@ export const ACCORDION_DATA: AccordionData = [
     ],
   },
   {
-    categoryName: 'とり肉',
-    categoryId: 2,
+    categoryName: CategoryName[CATEGORY.CHICKEN],
+    categoryId: CATEGORY.CHICKEN,
     icon: GiChicken,
     color: 'red',
     iconColor: 'red',
@@ -62,8 +51,8 @@ export const ACCORDION_DATA: AccordionData = [
     ],
   },
   {
-    categoryName: '牛肉',
-    categoryId: 3,
+    categoryName: CategoryName[CATEGORY.BEEF],
+    categoryId: CATEGORY.BEEF,
     icon: GiCow,
     color: 'blackAlpha',
     iconColor: 'black',
@@ -83,8 +72,8 @@ export const ACCORDION_DATA: AccordionData = [
     ],
   },
   {
-    categoryName: 'さかな',
-    categoryId: 4,
+    categoryName: CategoryName[CATEGORY.FISH],
+    categoryId: CATEGORY.FISH,
     icon: FaFishFins,
     color: 'blue',
     iconColor: '#2b6cb0',
