@@ -3,102 +3,102 @@ import { FaFishFins } from 'react-icons/fa6';
 import { GiChicken, GiCow, GiPig } from 'react-icons/gi';
 
 type AccordionData = {
-  title: string;
+  categoryName: string;
   categoryId: number;
   icon: IconType;
   color: string;
   iconColor: string;
   items: {
-    value: number;
+    id: number;
     label: string;
   }[];
 }[];
 
 export const ACCORDION_DATA: AccordionData = [
   {
-    title: 'ぶた肉',
+    categoryName: 'ぶた肉',
     categoryId: 1,
     icon: GiPig,
     color: 'pink',
     iconColor: '#ED64A6',
     items: [
       {
-        value: 1,
+        id: 1,
         label: 'こま切れ',
       },
       {
-        value: 2,
+        id: 2,
         label: 'バラ',
       },
       {
-        value: 3,
+        id: 3,
         label: 'ロース',
       },
     ],
   },
   {
-    title: 'とり肉',
+    categoryName: 'とり肉',
     categoryId: 2,
     icon: GiChicken,
     color: 'red',
     iconColor: 'red',
     items: [
       {
-        value: 1,
+        id: 1,
         label: 'ムネ',
       },
       {
-        value: 2,
+        id: 2,
         label: 'モモ',
       },
       {
-        value: 3,
+        id: 3,
         label: '手羽元',
       },
       {
-        value: 4,
+        id: 4,
         label: '手羽先',
       },
     ],
   },
   {
-    title: '牛肉',
+    categoryName: '牛肉',
     categoryId: 3,
     icon: GiCow,
-    color: 'black',
+    color: 'blackAlpha',
     iconColor: 'black',
     items: [
       {
-        value: 1,
+        id: 1,
         label: '薄切り',
       },
       {
-        value: 2,
+        id: 2,
         label: 'カルビ',
       },
       {
-        value: 3,
+        id: 3,
         label: 'ステーキ',
       },
     ],
   },
   {
-    title: 'さかな',
+    categoryName: 'さかな',
     categoryId: 4,
     icon: FaFishFins,
     color: 'blue',
     iconColor: '#2b6cb0',
     items: [
       {
-        value: 1,
+        id: 1,
         label: '鮭の切身',
       },
       {
-        value: 2,
+        id: 2,
         label: '白身魚の切身',
       },
       {
-        value: 3,
+        id: 3,
         label: '青魚',
       },
     ],
