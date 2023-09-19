@@ -8,42 +8,16 @@ import {
   Icon,
   Button,
 } from '@chakra-ui/react';
-import { FC, useCallback, useState } from 'react';
+import { FC, useContext } from 'react';
 
 import { ACCORDION_DATA } from 'src/components/SelectAccordion/data';
 
-import { Category } from 'src/types/category';
+import { SelectContext, SelectDispatchContext } from 'src/pages/Top/SelectProvider';
 
-export type SelectType = {
-  categoryName: string;
-  categoryId: Category;
-  id: number;
-  label: string;
-};
+const SelectAccordion: FC = () => {
+  const selected = useContext(SelectContext);
+  const handleSelect = useContext(SelectDispatchContext);
 
-type Props = {
-  onSelected: (value: SelectType[]) => void;
-};
-
-const SelectAccordion: FC<Props> = ({ onSelected }) => {
-  const [selected, setSelected] = useState<SelectType[]>([]);
-
-  const handleSelect = useCallback(
-    (data: SelectType) => {
-      if (selected.some((s) => s.categoryId === data.categoryId && s.id === data.id)) {
-        const filtered = selected.filter(
-          (s) => !(s.categoryId === data.categoryId && s.id === data.id),
-        );
-        setSelected(filtered);
-        onSelected(filtered);
-      } else {
-        const added = [...selected, data];
-        setSelected(added);
-        onSelected(added);
-      }
-    },
-    [selected, onSelected],
-  );
   return (
     <Accordion defaultIndex={[0]} mx='auto'>
       {ACCORDION_DATA.map((data) => {
@@ -61,13 +35,13 @@ const SelectAccordion: FC<Props> = ({ onSelected }) => {
             <AccordionPanel pb={3}>
               <Flex gap='5px'>
                 {data.items.map((item) => {
-                  const aa = selected.some(
+                  const isSelected = selected.some(
                     (s) => s.categoryId === data.categoryId && s.id === item.id,
                   );
                   return (
                     <Button
                       key={`${data.categoryId}-${item.id}`}
-                      variant={aa ? 'solid' : 'outline'}
+                      variant={isSelected ? 'solid' : 'outline'}
                       colorScheme={data.color}
                       px='4'
                       height='30px'
