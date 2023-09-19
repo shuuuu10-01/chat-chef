@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import { FC } from 'react';
 
 import Header from 'src/components/Header';
@@ -11,9 +11,9 @@ const Top: FC = () => {
   return (
     <Box>
       <Header />
-      <Text pt='4' pb='2' pl='2' fontWeight='bold' fontSize='sm' color='gray'>
+      <Heading pt='4' pb='2' pl='2' fontWeight='bold' size='sm' color='gray'>
         メインの食材を選択
-      </Text>
+      </Heading>
       <SelectProvider>
         <Box>
           <SelectAccordion />

@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Card, CardBody, CardHeader, Flex, Heading, Text } from '@chakra-ui/react';
 import { FC, useContext } from 'react';
 
 import Row from 'src/components/SelectedItem/Row';
@@ -19,12 +19,25 @@ const SelectedItem: FC = () => {
   const fish = selected.filter((s) => s.categoryId === CATEGORY.FISH);
 
   return (
-    <Flex flexDirection='column' gap='2'>
-      <Row categoryId={CATEGORY.PIG} items={pig} />
-      <Row categoryId={CATEGORY.CHICKEN} items={chicken} />
-      <Row categoryId={CATEGORY.BEEF} items={beef} />
-      <Row categoryId={CATEGORY.FISH} items={fish} />
-    </Flex>
+    <Card width='95%' mx='auto' mt='8'>
+      <CardHeader pb='0'>
+        <Heading fontWeight='bold' size='sm' color='gray'>
+          選択中の材料
+        </Heading>
+      </CardHeader>
+      <CardBody>
+        {selected.length ? (
+          <Flex flexDirection='column' gap='2'>
+            <Row categoryId={CATEGORY.PIG} items={pig} />
+            <Row categoryId={CATEGORY.CHICKEN} items={chicken} />
+            <Row categoryId={CATEGORY.BEEF} items={beef} />
+            <Row categoryId={CATEGORY.FISH} items={fish} />
+          </Flex>
+        ) : (
+          <Text>選択中の材料はありません</Text>
+        )}
+      </CardBody>
+    </Card>
   );
 };
 
