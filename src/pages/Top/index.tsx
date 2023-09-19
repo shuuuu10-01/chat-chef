@@ -1,18 +1,19 @@
-import { Box } from '@chakra-ui/react';
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Box, Text } from '@chakra-ui/react';
+import { FC, useState } from 'react';
 
 import Header from 'src/components/Header';
-import SelectAccordion from 'src/components/SelectAccordion';
+import SelectAccordion, { SelectType } from 'src/components/SelectAccordion';
 
 const Top: FC = () => {
+  const [selected, setSelected] = useState<SelectType[]>([]);
   return (
     <Box>
       <Header />
+      <Text pt='4' pb='2' pl='2' fontWeight='bold' fontSize='lg' color='gray'>
+        メインの食材を選択
+      </Text>
       <Box>
-        <p>top page</p>
-        <Link to='/login'>loginページへ</Link>
-        <SelectAccordion />
+        <SelectAccordion onSelected={setSelected} />
       </Box>
     </Box>
   );

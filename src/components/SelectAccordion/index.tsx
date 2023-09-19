@@ -4,40 +4,48 @@ import {
   AccordionButton,
   AccordionIcon,
   AccordionPanel,
-  AccordionProps,
   Flex,
   Icon,
   Button,
-  ComponentWithAs,
 } from '@chakra-ui/react';
-import { useCallback, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 
 import { ACCORDION_DATA } from 'src/components/SelectAccordion/data';
 
-type SelectType = {
+import { Category } from 'src/types/category';
+
+export type SelectType = {
   categoryName: string;
-  categoryId: number;
+  categoryId: Category;
   id: number;
   label: string;
 };
 
-const SelectAccordion: ComponentWithAs<'div', AccordionProps> = (props) => {
+type Props = {
+  onSelected: (value: SelectType[]) => void;
+};
+
+const SelectAccordion: FC<Props> = ({ onSelected }) => {
   const [selected, setSelected] = useState<SelectType[]>([]);
 
   const handleSelect = useCallback(
     (data: SelectType) => {
       if (selected.some((s) => s.categoryId === data.categoryId && s.id === data.id)) {
-        setSelected(() =>
-          selected.filter((s) => !(s.categoryId === data.categoryId && s.id === data.id)),
+        const filtered = selected.filter(
+          (s) => !(s.categoryId === data.categoryId && s.id === data.id),
         );
+        setSelected(filtered);
+        onSelected(filtered);
       } else {
-        setSelected([...selected, data]);
+        const added = [...selected, data];
+        setSelected(added);
+        onSelected(added);
       }
     },
-    [selected],
+    [selected, onSelected],
   );
   return (
-    <Accordion defaultIndex={[0]} mx='auto' {...props}>
+    <Accordion defaultIndex={[0]} mx='auto'>
       {ACCORDION_DATA.map((data) => {
         return (
           <AccordionItem key={data.categoryId}>
