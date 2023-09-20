@@ -34,7 +34,9 @@ const SelectedItem: FC = () => {
             <Row categoryId={CATEGORY.FISH} items={fish} />
           </Flex>
         ) : (
-          <Text>選択中の材料はありません</Text>
+          <Text fontSize='sm' fontWeight='bold'>
+            選択中の材料はありません
+          </Text>
         )}
       </CardBody>
     </Card>
