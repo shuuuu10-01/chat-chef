@@ -6,4 +6,5 @@ export type LoginFormData = {
 export type User = {
   id: string;
   email: string;
+  isAdmin: boolean;
 };
