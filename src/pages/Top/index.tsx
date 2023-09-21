@@ -1,5 +1,5 @@
 import { Box, Heading } from '@chakra-ui/react';
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback } from 'react';
 
 import Header from 'src/components/Header';
 import SelectAccordion from 'src/components/SelectAccordion';
@@ -11,7 +11,6 @@ import SelectProvider from 'src/pages/Top/SelectProvider';
 import { SelectType } from 'src/types/category';
 
 const Top: FC = () => {
-  const [isLoading, setLoading] = useState(false);
   const handleSubmit = useCallback((data: SelectType[]) => {
     console.log(data);
   }, []);
@@ -25,7 +24,7 @@ const Top: FC = () => {
         <Box>
           <SelectAccordion />
           <SelectedItem />
-          <SelectSubmit onSubmit={handleSubmit} isLoading={isLoading} />
+          <SelectSubmit onSubmit={handleSubmit} />
         </Box>
       </SelectProvider>
     </Box>

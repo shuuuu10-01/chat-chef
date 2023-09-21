@@ -7,11 +7,11 @@ import { SelectContext } from 'src/pages/Top/SelectProvider';
 import { SelectType } from 'src/types/category';
 
 type Props = {
-  isLoading: boolean;
+  isLoading?: boolean;
   onSubmit: (data: SelectType[]) => void;
 };
 
-const SelectSubmit: FC<Props> = ({ isLoading, onSubmit }) => {
+const SelectSubmit: FC<Props> = ({ isLoading = false, onSubmit }) => {
   const selected = useContext(SelectContext);
   return (
     <Center mt='8'>
