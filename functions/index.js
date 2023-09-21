@@ -1,6 +1,7 @@
-const functions = require('@google-cloud/functions-framework');
+import functions from '@google-cloud/functions-framework';
+import dotenv from 'dotenv';
+dotenv.config();
 
-functions.http('chat-chef', (req, res) => {
-  console.log(req.query);
-  res.send('Hello World!');
+functions.http('chat-chef', async (req, res) => {
+  res.send(JSON.stringify(result));
 });
