@@ -15,7 +15,10 @@ const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const observer = useCallback(
     async (currentUser: User | null) => {
-      if (currentUser === null) return navigate('/login');
+      if (currentUser === null) {
+        navigate('/login');
+        return setLoading(false);
+      }
 
       const { claims } = await currentUser.getIdTokenResult();
       dispatch(
