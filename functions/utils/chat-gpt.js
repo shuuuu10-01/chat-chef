@@ -6,7 +6,11 @@ const openai = new OpenAI({
   apiKey: process.env.CHAT_GPT_KEY,
 });
 
-export const gptTalk = async (content) => {
+/**
+ * ChatGPTに食材を使った料理を聞く
+ * @param {string[]} ingredients 食材名
+ */
+export const gptTalk = async (ingredients) => {
   const completion = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
     messages: [
@@ -17,7 +21,7 @@ export const gptTalk = async (content) => {
       },
       {
         role: 'user',
-        content: content,
+        content: ingredients.join('と'),
       },
     ],
   });
