@@ -1,13 +1,5 @@
-import admin from 'firebase-admin';
+import { firestore } from '../plugins/firebase.js';
 import { getToday } from './getToday.js';
-
-import key from './firestore-key.json' assert { type: 'json' };
-
-admin.initializeApp({
-  credential: admin.credential.cert(key),
-});
-
-const firestore = admin.firestore();
 
 export const postFirestore = (data) => {
   const today = getToday();
