@@ -1,18 +1,18 @@
 import admin from 'firebase-admin';
 
 export const verifyIdToken = (idToken) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     admin
       .auth()
       .verifyIdToken(idToken)
       .then((result) => {
         if (!result.admin) {
-          throw new Error('Unauthorized-admin');
+          reject(new Error('Unauthorized'));
         }
         resolve();
       })
-      .catch((e) => {
-        throw new Error('Unauthorized');
+      .catch(() => {
+        reject(new Error('Unauthorized'));
       });
   });
 };
