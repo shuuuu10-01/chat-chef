@@ -8,11 +8,14 @@ import SelectSubmit from 'src/components/SelectSubmit';
 
 import SelectProvider from 'src/pages/Top/SelectProvider';
 
+import { runChatGPT } from 'src/repositories/functions';
+
 import { SelectType } from 'src/types/category';
 
 const Top: FC = () => {
-  const handleSubmit = useCallback((data: SelectType[]) => {
-    console.log(data);
+  const handleSubmit = useCallback(async (data: SelectType[]) => {
+    const ingredients = data.map((d) => `${d.categoryName}の${d.label}`);
+    await runChatGPT(ingredients);
   }, []);
   return (
     <Box>
