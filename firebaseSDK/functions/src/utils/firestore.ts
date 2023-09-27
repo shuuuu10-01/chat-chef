@@ -1,4 +1,4 @@
-import { getJapaneseCurrentDate } from './getJapaneseCurrentDate';
+import { getJapaneseCurrentDate } from './string';
 import { firestore } from '../plugins/firebase';
 
 type postData = {
