@@ -20,12 +20,11 @@ const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
         return setLoading(false);
       }
 
-      const { claims, token } = await currentUser.getIdTokenResult();
+      const { claims } = await currentUser.getIdTokenResult();
       dispatch(
         actions.user.updateUser({
           id: currentUser.uid,
           email: currentUser.email!,
-          idToken: token,
           isAdmin: !!claims.admin,
         }),
       );
