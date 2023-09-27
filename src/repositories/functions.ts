@@ -1,16 +1,7 @@
-import instance from 'src/plugins/axios';
-import { store } from 'src/store';
+import { httpsCallable } from 'firebase/functions';
+import { functions } from 'src/plugins/firebase';
 
 export const runChatGPT = (ingredients: string[]) => {
-  const idToken = store.getState().user.idToken;
-  return instance.post(
-    '',
-    { ingredients: ingredients },
-    {
-      headers: {
-        Authorization: idToken,
-      },
-      timeout: 100000,
-    },
-  );
+  const chat = httpsCallable<{ ingredients: string[] }>(functions, 'chat');
+  return chat({ ingredients: ingredients });
 };
