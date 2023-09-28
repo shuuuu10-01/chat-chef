@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { reducer as suggestionReducer, actions as suggestionActions } from 'src/store/suggestion';
 import {
   reducer as userReducer,
   actions as userActions,
@@ -7,10 +8,11 @@ import {
 
 export const actions = {
   user: userActions,
+  suggestion: suggestionActions,
 };
 
 export const store = configureStore({
-  reducer: { user: userReducer },
+  reducer: { user: userReducer, suggestion: suggestionReducer },
 });
 
 export const selectors = { user: userSelectors };
