@@ -32,11 +32,12 @@ export const chat = onRequest(async (request, response) => {
 
   if (!result.content) {
     response.set(404).json({ error: 'Not Found' });
+    return;
   }
   await postFirestore({
     ingredients: ingredients,
     chatGPTResult: result.content!,
   });
 
-  response.status(204).send();
+  response.status(200).send({ data: request.body.data });
 });
