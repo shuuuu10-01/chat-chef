@@ -9,10 +9,10 @@ type postData = {
 export const postFirestore = (data: postData) => {
   const today = getJapaneseCurrentDate();
 
-  const resultRef = firestore.collection('result');
+  const resultRef = firestore.collection('suggestion');
   return resultRef.add({
-    ingredients: data.ingredients,
-    chatGPTResult: data.chatGPTResult,
     date: today,
+    ingredients: data.ingredients,
+    chatGPT: data.chatGPTResult,
   });
 };
