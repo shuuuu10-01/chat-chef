@@ -1,6 +1,6 @@
 /**
  * 現在の日本の日付を返却する
- * @example "2023/8/28"
+ * @example "2023/08/28"
  */
 export function getJapaneseCurrentDate(): string {
   const options: Intl.DateTimeFormatOptions = {
