@@ -1,5 +1,5 @@
-import { Box, Heading } from '@chakra-ui/react';
-import { FC, useCallback, useEffect, useState } from 'react';
+import { Box, Heading, Link } from '@chakra-ui/react';
+import { FC, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { actions, useAppDispatch, useAppSelector } from 'src/store';
 
@@ -14,13 +14,12 @@ import { runChatGPT } from 'src/repositories/functions';
 
 import { CATEGORY, SelectType } from 'src/types/category';
 
-import { fetchFireStore } from 'src/utils/firestore';
-
 const Top: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { isAdmin } = useAppSelector((state) => state.user);
+  const { contents } = useAppSelector((state) => state.suggestion);
 
   const handleSubmit = useCallback(
     async (data: SelectType[]) => {
@@ -45,10 +44,6 @@ const Top: FC = () => {
     [isAdmin, dispatch, navigate],
   );
 
-  useEffect(() => {
-    fetchFireStore();
-  });
-
   return (
     <Box>
       <Header />
@@ -62,6 +57,11 @@ const Top: FC = () => {
           <SelectSubmit isLoading={isLoading} onSubmit={handleSubmit} />
         </Box>
       </SelectProvider>
+      {!!contents.length && (
+        <Link my='4' display='block' textAlign='center' href='/suggest' fontWeight=''>
+          本日の提案結果へ→
+        </Link>
+      )}
     </Box>
   );
 };
