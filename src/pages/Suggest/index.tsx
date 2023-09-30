@@ -6,6 +6,9 @@ import { useAppSelector } from 'src/store';
 import './github-markdown.css';
 
 import Header from 'src/components/Header';
+import LogoIcon from 'src/components/LogoIcon';
+
+import styles from './styles.module.scss';
 
 const Suggest: FC = () => {
   const { contents } = useAppSelector((state) => state.suggestion);
@@ -46,11 +49,21 @@ const Suggest: FC = () => {
           </Button>
         </Flex>
       )}
-      <Box width='95%' mt='2' mx='auto'>
-        <Box padding='8' height={'90%'}>
-          <Markdown className='markdown-body'>{contents[index]?.chatGPT}</Markdown>
+      {!!contents[index] && (
+        <Box width='90%' my='2' mx='auto'>
+          <Flex alignItems='start' justifyContent='flex-end' pl='62px' mb='4'>
+            <p className={styles['user-message']}>
+              {convertUserMessage(contents[index].ingredients)}
+            </p>
+          </Flex>
+          <div className={styles.chef}>
+            <LogoIcon className={styles.icon} size='40px' />
+            <Markdown className={`markdown-body ${styles.suggest}`}>
+              {contents[index]?.chatGPT}
+            </Markdown>
+          </div>
         </Box>
-      </Box>
+      )}
       {contents.length > 1 && (
         <Flex justifyContent='space-between' px='2' py='4'>
           <Button onClick={toPrevious} variant='outline' isDisabled={disabledPrevious}>
@@ -66,3 +79,7 @@ const Suggest: FC = () => {
 };
 
 export default Suggest;
+
+const convertUserMessage = (ingredients: string[]) => {
+  return `${ingredients.join(' と ')} を使った料理を教えて`;
+};
