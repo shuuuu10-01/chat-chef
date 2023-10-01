@@ -1,6 +1,5 @@
 import { getJapaneseCurrentDate } from './string';
 import { firestore } from '../plugins/firebase';
-import { serverTimestamp } from 'firebase/firestore';
 
 type postData = {
   ingredients: string[];
@@ -15,6 +14,6 @@ export const postFirestore = (data: postData) => {
     date: today,
     ingredients: data.ingredients,
     chatGPT: data.chatGPTResult,
-    createdAt: serverTimestamp(),
+    createdAt: new Date(),
   });
 };
