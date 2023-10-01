@@ -1,4 +1,4 @@
-import { query, collection, where, getDocs } from 'firebase/firestore';
+import { query, collection, where, getDocs, orderBy } from 'firebase/firestore';
 import { firestore } from 'src/plugins/firebase';
 import { actions, store } from 'src/store';
 
@@ -13,7 +13,11 @@ export const fetchFireStore = async () => {
 
   if (!(refreshFlag || date !== japaneseCurrentDate)) return;
 
-  const q = query(collection(firestore, 'suggestion'), where('date', '==', japaneseCurrentDate));
+  const q = query(
+    collection(firestore, 'suggestion'),
+    where('date', '==', japaneseCurrentDate),
+    orderBy('createdAt', 'desc'),
+  );
 
   const result = await getDocs(q);
 
