@@ -15,8 +15,8 @@ export const { actions, reducer } = createSlice({
       state.date = action.payload.date;
       state.contents = action.payload.contents;
     },
-    toggleRefreshFlag(state) {
-      state.refreshFlag = !state.refreshFlag;
+    activateRefreshFlag(state) {
+      state.refreshFlag = true;
     },
   },
 });
