@@ -1,7 +1,7 @@
-import { Box, Button, Flex } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, Link as ChakraLink } from '@chakra-ui/react';
 import { FC, useEffect, useMemo } from 'react';
 import Markdown from 'react-markdown';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useAppSelector } from 'src/store';
 import './github-markdown.css';
 
@@ -11,7 +11,7 @@ import LogoIcon from 'src/components/LogoIcon';
 import styles from './styles.module.scss';
 
 const Suggest: FC = () => {
-  const { contents } = useAppSelector((state) => state.suggestion);
+  const { contents, refreshFlag } = useAppSelector((state) => state.suggestion);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const index = Number(searchParams.get('index') || 0);
@@ -72,6 +72,15 @@ const Suggest: FC = () => {
           <Button onClick={toNext} variant='outline' isDisabled={disabledNext}>
             次へ →
           </Button>
+        </Flex>
+      )}
+      {contents.length === 0 && !refreshFlag && (
+        <Flex flexDirection='column' alignItems='center' justifyContent='center' mt='20' gap='2'>
+          <Text>本日の提案結果がありません。</Text>
+          <Text>具材を選択し、シェフに料理を聞いてください</Text>
+          <ChakraLink as={Link} to='/' color='orange.500'>
+            トップページへ
+          </ChakraLink>
         </Flex>
       )}
     </Box>
