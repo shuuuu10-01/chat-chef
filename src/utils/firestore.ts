@@ -17,8 +17,6 @@ export const fetchFireStore = async () => {
 
   const result = await getDocs(q);
 
-  if (result.empty) return;
-
   const contents = [] as Content[];
   result.forEach((r) => {
     const data = r.data();
