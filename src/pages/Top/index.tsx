@@ -1,6 +1,6 @@
-import { Box, Heading, Link } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import { FC, useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { actions, useAppDispatch, useAppSelector } from 'src/store';
 
 import Header from 'src/components/Header';
@@ -32,7 +32,7 @@ const Top: FC = () => {
       const ingredients = formatIngredients(data);
       runChatGPT(ingredients)
         .then(() => {
-          dispatch(actions.suggestion.toggleRefreshFlag());
+          dispatch(actions.suggestion.activateRefreshFlag());
           navigate('/suggest');
         })
         .catch((e) => {
@@ -58,8 +58,10 @@ const Top: FC = () => {
         </Box>
       </SelectProvider>
       {!!contents.length && (
-        <Link my='4' display='block' textAlign='center' href='/suggest' fontWeight=''>
-          本日の提案結果へ→
+        <Link to='/suggest'>
+          <Text my='4' display='block' textAlign='center' fontWeight=''>
+            本日の提案結果へ→
+          </Text>
         </Link>
       )}
     </Box>
