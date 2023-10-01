@@ -77,7 +77,7 @@ const Suggest: FC = () => {
       {contents.length === 0 && !refreshFlag && (
         <Flex flexDirection='column' alignItems='center' justifyContent='center' mt='20' gap='2'>
           <Text>本日の提案結果がありません。</Text>
-          <Text>具材を選択し、シェフに料理を聞いてください</Text>
+          <Text>具材を選択して、シェフにレシピを聞いてください</Text>
           <ChakraLink as={Link} to='/' color='orange.500'>
             トップページへ
           </ChakraLink>
