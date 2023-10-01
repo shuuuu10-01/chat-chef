@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AuthProvider from 'src/plugins/AuthProvider';
 
 import Login from 'src/pages/Login';
+import Suggest from 'src/pages/Suggest';
 import Top from 'src/pages/Top';
 
 const CustomRouter: FC = () => {
@@ -12,6 +13,7 @@ const CustomRouter: FC = () => {
         <Routes>
           <Route path='/' element={<Top />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/suggest' element={<Suggest />} />
           <Route path='*' element={<Top />} />
         </Routes>
       </AuthProvider>

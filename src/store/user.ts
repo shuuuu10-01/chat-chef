@@ -29,6 +29,7 @@ export const { actions, reducer } = createSlice({
     resetUser(state) {
       state.id = '';
       state.email = '';
+      state.isAdmin = false;
     },
   },
 });
