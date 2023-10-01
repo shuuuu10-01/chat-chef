@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text, Link as ChakraLink } from '@chakra-ui/react';
 import { FC, useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { actions, useAppDispatch, useAppSelector } from 'src/store';
@@ -58,11 +58,11 @@ const Top: FC = () => {
         </Box>
       </SelectProvider>
       {!!contents.length && (
-        <Link to='/suggest'>
+        <ChakraLink as={Link} to='/suggest' color='orange.500'>
           <Text my='4' display='block' textAlign='center' fontWeight=''>
             本日の提案結果へ→
           </Text>
-        </Link>
+        </ChakraLink>
       )}
     </Box>
   );
