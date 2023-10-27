@@ -67,9 +67,9 @@ const History: FC = () => {
   }, [currentContent, contents, setSearchParams, page]);
 
   return (
-    <Box>
+    <Box pb='4'>
       <Header />
-      <Select w='80%' mx='auto' my='4' onChange={handleSelect} value={date}>
+      <Select w='80%' mx='auto' mt='4' onChange={handleSelect} value={date}>
         {!date && <option>日付を選択</option>}
         {dateList.map((d) => {
           return (

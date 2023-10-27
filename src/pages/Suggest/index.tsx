@@ -28,7 +28,7 @@ const Suggest: FC = () => {
   }, [currentContent, page, setSearchParams]);
 
   return (
-    <Box>
+    <Box pb='4'>
       <Header />
       {contents.length > 1 && (
         <Pagination
