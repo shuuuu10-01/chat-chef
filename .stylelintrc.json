@@ -9,6 +9,6 @@
     "stylelint-order"
   ],
   "ignoreFiles": [
-    "src/pages/Suggest/github-markdown.css"
+    "src/components/Chat/github-markdown.css"
   ]
 }
