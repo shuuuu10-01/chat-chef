@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom';
 import { Z_INDEX_HEADER } from 'src/constants/z-index';
 
 import LogoIcon from 'src/components/LogoIcon';
+import Sidebar from 'src/components/Sidebar';
 
 const Header: FC = () => {
   return (
     <Box
       position='sticky'
       top={0}
-      pl='2'
-      py='2'
+      p='2'
       borderBottom='1px'
       borderColor='gray.300'
       backgroundColor='white'
       zIndex={Z_INDEX_HEADER}>
-      <Heading as='h3' size='xl'>
+      <Heading as='h3' size='xl' display='flex' justifyContent='space-between'>
         <ChakraLink
           as={Link}
           to='/'
@@ -28,6 +28,7 @@ const Header: FC = () => {
           <LogoIcon />
           Chat Chef
         </ChakraLink>
+        <Sidebar />
       </Heading>
     </Box>
   );
