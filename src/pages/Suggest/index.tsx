@@ -15,10 +15,10 @@ const Suggest: FC = () => {
   const currentContent = useMemo(() => contents[page - 1], [contents, page]);
 
   const toPrevious = () => {
-    setSearchParams({ index: String(page - 1) });
+    setSearchParams({ page: String(page - 1) });
   };
   const toNext = () => {
-    setSearchParams({ index: String(page + 1) });
+    setSearchParams({ page: String(page + 1) });
   };
 
   useEffect(() => {
