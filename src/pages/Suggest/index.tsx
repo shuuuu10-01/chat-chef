@@ -22,10 +22,10 @@ const Suggest: FC = () => {
   };
 
   useEffect(() => {
-    if (contents.length === 0 || page < 1 || !!currentContent) return;
+    if (page > 1 && !!currentContent) return;
     // クエリに不適切な値が設定された場合、クエリをリセット
     setSearchParams();
-  }, [currentContent, contents, page, setSearchParams]);
+  }, [currentContent, page, setSearchParams]);
 
   return (
     <Box>
