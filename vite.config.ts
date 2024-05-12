@@ -12,7 +12,7 @@ export default defineConfig({
       injectRegister: 'auto',
       manifest: {
         name: 'Chat Chef',
-        short_name: 'chat-chef',
+        short_name: 'Chat Chef',
         description: '食材を選択し、その食材を用いた料理を提案してくれるアプリ',
         theme_color: '#F6AD55',
         background_color: '#FFFFFF',
