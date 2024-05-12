@@ -17,6 +17,7 @@ export default defineConfig({
         theme_color: '#F6AD55',
         background_color: '#FFFFFF',
         display: 'standalone',
+        lang: 'ja',
         icons: [
           {
             src: 'icon-180x180.png',
