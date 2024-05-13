@@ -19,7 +19,7 @@ const SelectedItem: FC = () => {
   const fish = selected.filter((s) => s.categoryId === CATEGORY.FISH);
 
   return (
-    <Card mx='auto' mt='8'>
+    <Card mt='8'>
       <CardHeader pb='0'>
         <Heading fontWeight='bold' size='sm' color='gray'>
           選択中の材料
@@ -34,7 +34,7 @@ const SelectedItem: FC = () => {
             <Row categoryId={CATEGORY.FISH} items={fish} />
           </Flex>
         ) : (
-          <Text fontSize='sm' fontWeight='bold'>
+          <Text fontSize='sm' fontWeight='bold' color='gray'>
             選択中の材料はありません
           </Text>
         )}

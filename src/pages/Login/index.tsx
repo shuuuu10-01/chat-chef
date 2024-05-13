@@ -34,7 +34,12 @@ const Login: FC = () => {
   };
 
   return (
-    <Flex height='100dvh' alignItems='center' justifyContent='center' flexDirection='column'>
+    <Flex
+      maxW='2xl'
+      height='100dvh'
+      alignItems='center'
+      justifyContent='center'
+      flexDirection='column'>
       <Heading mb={8} display='flex' alignItems='center' gap='10px'>
         <LogoIcon />
         Chat Chef

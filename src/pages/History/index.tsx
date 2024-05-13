@@ -1,4 +1,4 @@
-import { Box, Flex, Select, Text } from '@chakra-ui/react';
+import { Box, Container, Flex, Select, Text } from '@chakra-ui/react';
 import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -69,38 +69,40 @@ const History: FC = () => {
   return (
     <Box pb='4'>
       <Header />
-      <Select w='80%' mx='auto' mt='4' onChange={handleSelect} value={date}>
-        {!date && <option>日付を選択</option>}
-        {dateList.map((d) => {
-          return (
-            <option key={d} value={d}>
-              {d.replace(/-/g, '/')}
-            </option>
-          );
-        })}
-      </Select>
-      {contents.length > 1 && (
-        <Pagination
-          toPrevious={toPrevious}
-          toNext={toNext}
-          page={page}
-          lastPage={contents.length}
-        />
-      )}
-      {!!currentContent && <Chat content={currentContent} />}
-      {contents.length > 1 && (
-        <Pagination
-          toPrevious={toPrevious}
-          toNext={toNext}
-          page={page}
-          lastPage={contents.length}
-        />
-      )}
-      {!date && (
-        <Flex flexDirection='column' alignItems='center' justifyContent='center' mt='20' gap='2'>
-          <Text>日付が選択されていません</Text>
-        </Flex>
-      )}
+      <Container>
+        <Select w='80%' mx='auto' mt='4' onChange={handleSelect} value={date}>
+          {!date && <option>日付を選択</option>}
+          {dateList.map((d) => {
+            return (
+              <option key={d} value={d}>
+                {d.replace(/-/g, '/')}
+              </option>
+            );
+          })}
+        </Select>
+        {contents.length > 1 && (
+          <Pagination
+            toPrevious={toPrevious}
+            toNext={toNext}
+            page={page}
+            lastPage={contents.length}
+          />
+        )}
+        {!!currentContent && <Chat content={currentContent} />}
+        {contents.length > 1 && (
+          <Pagination
+            toPrevious={toPrevious}
+            toNext={toNext}
+            page={page}
+            lastPage={contents.length}
+          />
+        )}
+        {!date && (
+          <Flex flexDirection='column' alignItems='center' justifyContent='center' mt='20' gap='2'>
+            <Text>日付が選択されていません</Text>
+          </Flex>
+        )}
+      </Container>
     </Box>
   );
 };

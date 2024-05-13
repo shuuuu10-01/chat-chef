@@ -1,4 +1,4 @@
-import { Box, Text, Link as ChakraLink, Flex } from '@chakra-ui/react';
+import { Box, Text, Link as ChakraLink, Flex, Container } from '@chakra-ui/react';
 import { FC, useEffect, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useAppSelector } from 'src/store';
@@ -30,32 +30,34 @@ const Suggest: FC = () => {
   return (
     <Box pb='4'>
       <Header />
-      {contents.length > 1 && (
-        <Pagination
-          toPrevious={toPrevious}
-          toNext={toNext}
-          page={page}
-          lastPage={contents.length}
-        />
-      )}
-      {!!currentContent && <Chat content={currentContent} />}
-      {contents.length > 1 && (
-        <Pagination
-          toPrevious={toPrevious}
-          toNext={toNext}
-          page={page}
-          lastPage={contents.length}
-        />
-      )}
-      {contents.length === 0 && !refreshFlag && (
-        <Flex flexDirection='column' alignItems='center' justifyContent='center' mt='20' gap='2'>
-          <Text>本日の提案結果がありません。</Text>
-          <Text>具材を選択して、シェフにレシピを聞いてください</Text>
-          <ChakraLink as={Link} to='/' color='orange.500'>
-            トップページへ
-          </ChakraLink>
-        </Flex>
-      )}
+      <Container>
+        {contents.length > 1 && (
+          <Pagination
+            toPrevious={toPrevious}
+            toNext={toNext}
+            page={page}
+            lastPage={contents.length}
+          />
+        )}
+        {!!currentContent && <Chat content={currentContent} />}
+        {contents.length > 1 && (
+          <Pagination
+            toPrevious={toPrevious}
+            toNext={toNext}
+            page={page}
+            lastPage={contents.length}
+          />
+        )}
+        {contents.length === 0 && !refreshFlag && (
+          <Flex flexDirection='column' alignItems='center' justifyContent='center' mt='20' gap='2'>
+            <Text>本日の提案結果がありません。</Text>
+            <Text>具材を選択して、シェフにレシピを聞いてください</Text>
+            <ChakraLink as={Link} to='/' color='orange.500'>
+              トップページへ
+            </ChakraLink>
+          </Flex>
+        )}
+      </Container>
     </Box>
   );
 };

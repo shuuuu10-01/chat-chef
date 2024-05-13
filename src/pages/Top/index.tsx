@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Link as ChakraLink } from '@chakra-ui/react';
+import { Box, Heading, Text, Link as ChakraLink, Container } from '@chakra-ui/react';
 import { FC, useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { actions, useAppDispatch, useAppSelector } from 'src/store';
@@ -47,15 +47,15 @@ const Top: FC = () => {
   return (
     <Box>
       <Header />
-      <Heading pt='4' pb='2' pl='2' fontWeight='bold' size='sm' color='gray'>
-        メインの食材を選択
-      </Heading>
       <SelectProvider>
-        <Box>
+        <Container mx='auto' display='flex' flexDirection='column' justifyContent='center'>
+          <Heading pt='4' pb='2' pl='2' fontWeight='bold' size='sm' color='gray'>
+            メインの食材を選択
+          </Heading>
           <SelectAccordion />
           <SelectedItem />
           <SelectSubmit isLoading={isLoading} onSubmit={handleSubmit} />
-        </Box>
+        </Container>
       </SelectProvider>
       {!!contents.length && (
         <ChakraLink as={Link} to='/suggest' color='orange.500'>

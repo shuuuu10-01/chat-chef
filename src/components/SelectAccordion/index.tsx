@@ -19,7 +19,7 @@ const SelectAccordion: FC = () => {
   const handleSelect = useContext(SelectDispatchContext);
 
   return (
-    <Accordion defaultIndex={[0]} mx='auto'>
+    <Accordion defaultIndex={[0]}>
       {ACCORDION_DATA.map((data) => {
         return (
           <AccordionItem key={data.categoryId}>
