@@ -1,27 +1,35 @@
-# React + TypeScript + Vite
+# Chat Chef
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## アプリの概要
 
-Currently, two official plugins are available:
+食材を選択し、その食材を用いた料理を提案してくれるアプリ
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 開発環境
 
-## Expanding the ESLint configuration
+|       | version |
+| :---- | :------ |
+| node  | 18.17.1 |
+| vite  | 4.4.5   |
+| react | 18.2.0  |
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 主な使用ライブラリやAPI
 
-- Configure the top-level `parserOptions` property like this:
+|                 | 説明                                           |
+| :-------------- | :--------------------------------------------- |
+| Redux toolkit   | 状態管理ツール                                 |
+| ChakraUI        | UIライブラリ                                   |
+| ChatGPT API     | 料理の提案に使用                               |
+| Firebase        | ログイン認証                                   |
+| FireStore       | 料理の提案結果を保存                           |
+| CloudFunctions  | ChatGPT APIを実行し、FireStoreに結果を保存する |
+| vite-plugin-pwa | PWAに対応させるためのツール                    |
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+その他にも静的解析ツール(ESLintやStyleLint)なども導入しています。
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 画面一覧
+
+| ログイン画面                          | 食材選択画面                                |
+| :------------------------------------ | :------------------------------------------ |
+| <img src="./docs/ログイン画面.png">   | <img src="./docs/食材選択画面.png">         |
+| 料理の提案画面                        | 過去の提案の履歴画面                        |
+| <img src="./docs/料理の提案画面.png"> | <img src="./docs/過去の提案の履歴画面.png"> |
