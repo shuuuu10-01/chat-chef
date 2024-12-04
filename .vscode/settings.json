@@ -1,9 +1,9 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.addMissingImports": true,
-    "source.fixAll.stylelint": true
+    "source.fixAll.eslint": "explicit",
+    "source.addMissingImports": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
   "stylelint.validate": [
     "css",
