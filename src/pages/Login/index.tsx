@@ -39,7 +39,8 @@ const Login: FC = () => {
       height='100dvh'
       alignItems='center'
       justifyContent='center'
-      flexDirection='column'>
+      flexDirection='column'
+      mx='auto'>
       <Heading mb={8} display='flex' alignItems='center' gap='10px'>
         <LogoIcon />
         Chat Chef
