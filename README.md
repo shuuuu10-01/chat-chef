@@ -38,3 +38,10 @@
 | <img src="./docs/ログイン画面.png">   | <img src="./docs/食材選択画面.png">         |
 | 料理の提案画面                        | 過去の提案の履歴画面                        |
 | <img src="./docs/料理の提案画面.png"> | <img src="./docs/過去の提案の履歴画面.png"> |
+
+## デプロイメモ
+
+追加機能を実装した場合はPRを作成し、Netlifyで正常に動くか確認すること
+
+1. `$ npm run build`でビルドファイルを作成
+2. `$ firebase deploy`でデプロイ完了
