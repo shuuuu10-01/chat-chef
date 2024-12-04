@@ -48,4 +48,4 @@
 追加機能を実装した場合はPRを作成し、Netlifyで正常に動くか確認すること
 
 1. `$ npm run build`でビルドファイルを作成
-2. `$ firebase deploy`でデプロイ完了
+2. `$ firebase deploy`でデプロイ実施
