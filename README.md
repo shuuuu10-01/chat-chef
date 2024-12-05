@@ -21,17 +21,18 @@
 | vite  | 4.4.5   |
 | react | 18.2.0  |
 
-### 主な使用ライブラリやAPI
+### 主な使用ライブラリやAPI、ツール
 
 |                 | 説明                                           |
 | :-------------- | :--------------------------------------------- |
 | Redux toolkit   | 状態管理ツール                                 |
 | ChakraUI        | UIライブラリ                                   |
 | ChatGPT API     | 料理の提案に使用                               |
-| Firebase        | ログイン認証                                   |
+| Firebase        | ログイン認証やホスティング、Functionsに利用    |
 | FireStore       | 料理の提案結果を保存                           |
 | CloudFunctions  | ChatGPT APIを実行し、FireStoreに結果を保存する |
 | vite-plugin-pwa | PWAに対応させるためのツール                    |
+| netlify         | CI/CD                                          |
 
 その他にも静的解析ツール(ESLintやStyleLint)なども導入しています。
 
@@ -47,5 +48,5 @@
 
 追加機能を実装した場合はPRを作成し、Netlifyで正常に動くか確認すること
 
-1. `$ npm run build`でビルドファイルを作成
+1. Netlifyで確認できたら、PRをマージ
 2. `$ firebase deploy`でデプロイ実施
