@@ -37,16 +37,17 @@ sequenceDiagram
     Firebase Functions-->>アプリ: ChatGPT APIの返却値を渡す
 ```
 
-画面側からChatGPT APIを呼び出すとAPIの結果を待たずに処理の中断が発生する可能性(ユーザーによる画面リロードなど)があります。ChatGPT APIの実行を無駄にしたくないため、FunctionsでChatGPT APIを呼び出しています。
+画面側からChatGPT APIを呼び出すとAPIの結果を待たずに処理の中断が発生する可能性(ユーザーによる画面リロードなど)があります。
+ChatGPT APIの呼び出しを無駄にしたくないため、FunctionsでChatGPT APIを呼び出しています。
 
-<img src="./docs/食材選択画面.png">
+<img src="./docs/食材選択画面.png" width="300px">
 
 ### ログイン機能
 
 Firebase Authenticationを利用してログイン認証を実装しています。
 ChatGPT APIは有料であり、不正な呼び出しを避けるため、ログイン認証を行い、管理者権限を持つユーザーのみAPIを実行できるようにしています。
 
-<img src="./docs/ログイン画面.png"> |
+<img src="./docs/ログイン画面.png" width="300px">
 
 ### 本日の料理提案画面
 
@@ -54,14 +55,14 @@ ChatGPT APIは有料であり、不正な呼び出しを避けるため、ログ
 チャットアプリでシェフとトークしているようなデザインにしています。
 1日に複数回ChatGPT APIを実行できるため、ページャー機能もあります。
 
-<img src="./docs/料理の提案画面.png">
+<img src="./docs/料理の提案画面.png" width="300px">
 
 ### 過去の提案の履歴
 
 ChatGPT APIの処理に時間がかかってしまうため、過去の提案履歴から食べたい料理をさっと確認するための機能です。
 この画面と本日の料理提案画面で用いているコンポーネントは共通化するように工夫しています。
 
-<img src="./docs/過去の提案の履歴画面.png">
+<img src="./docs/過去の提案の履歴画面.png" width="300px">
 
 ### 接続情報
 
