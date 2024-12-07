@@ -18,23 +18,23 @@
 
 <img src="./docs/食材選択画面.png" width="300px">
 
-アプリからFirebase Functionsを呼び出し、Firebase FunctionsからChatGPT APIを実行しています。その結果をアプリへ返却しています。その際、ChatGPT APIの返却値を再利用するためにFireStoreへ保存しています。
+アプリからCloudFunctionsを呼び出し、CloudFunctionsからChatGPT APIを実行しています。その結果をアプリへ返却しています。その際、ChatGPT APIの返却値を再利用するためにFireStoreへ保存しています。
 
 画面の「シェフにレシピを聞く」ボタン押下後の動作のシーケンス図は以下の通り
 
 ```mermaid
 sequenceDiagram
     participant アプリ
-    participant Firebase Functions
+    participant CloudFunctions
     participant ChatGPT API
     participant FireStore
 
-    アプリ->>Firebase Functions: リクエスト送信
-    Firebase Functions->>Firebase Functions: リクエスト内容を確認
-    Firebase Functions->>ChatGPT API: API実行
-    ChatGPT API-->>Firebase Functions: APIのレスポンス
-    Firebase Functions->>FireStore: レスポンスを保存
-    Firebase Functions-->>アプリ: ChatGPT APIの返却値を渡す
+    アプリ->>CloudFunctions: リクエスト送信
+    CloudFunctions->>CloudFunctions: リクエスト内容を確認
+    CloudFunctions->>ChatGPT API: API実行
+    ChatGPT API-->>CloudFunctions: APIのレスポンス
+    CloudFunctions->>FireStore: レスポンスを保存
+    CloudFunctions-->>アプリ: ChatGPT APIの返却値を渡す
     アプリ->>アプリ: 本日の料理提案画面へ遷移し、ChatGPT APIの結果を表示する
 ```
 
@@ -84,7 +84,7 @@ ChatGPT APIの処理に時間がかかってしまうため、過去の提案履
 | Redux toolkit   | 状態管理ツール                                 |
 | ChakraUI        | UIライブラリ                                   |
 | ChatGPT API     | 料理の提案に使用                               |
-| Firebase        | ログイン認証やホスティング、Functionsに利用    |
+| Firebase        | ログイン認証やホスティングに利用               |
 | FireStore       | 料理の提案結果を保存                           |
 | CloudFunctions  | ChatGPT APIを実行し、FireStoreに結果を保存する |
 | vite-plugin-pwa | PWAに対応させるためのツール                    |
