@@ -20,7 +20,7 @@
 
 アプリからCloudFunctionsを呼び出し、CloudFunctionsからChatGPT APIを実行しています。その結果をアプリへ返却しています。その際、ChatGPT APIの返却値を再利用するためにFireStoreへ保存しています。
 
-画面の「シェフにレシピを聞く」ボタン押下後の動作のシーケンス図は以下の通りです。
+画面の「シェフにレシピを聞く」ボタン押下後してからレシピを表示するまでのシーケンス図は以下の通りです。
 
 ```mermaid
 sequenceDiagram
@@ -34,8 +34,11 @@ sequenceDiagram
     CloudFunctions->>ChatGPT API: API実行
     ChatGPT API-->>CloudFunctions: APIのレスポンス
     CloudFunctions->>FireStore: レスポンスを保存
-    CloudFunctions-->>アプリ: ChatGPT APIの返却値を渡す
-    アプリ->>アプリ: 本日のレシピ提案画面へ遷移し、<br >ChatGPT APIの結果を表示する
+    CloudFunctions-->>アプリ: 成功メッセージを返却
+    アプリ->>アプリ: 本日のレシピ提案画面へ遷移する
+    アプリ->>FireStore: 本日のレシピを取得するリクエスト送信
+    FireStore-->>アプリ: レスポンス
+    アプリ->>アプリ: レシピを表示
 ```
 
 画面側からChatGPT APIを呼び出すとAPIの結果を待たずに処理の中断が発生する可能性（ユーザーによる画面リロードなど）があります。ChatGPT APIの呼び出しを無駄にしたくないため、CloudFunctionsでChatGPT APIを呼び出しています。
