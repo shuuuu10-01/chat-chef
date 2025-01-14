@@ -10,7 +10,8 @@
     "lint:css": "stylelint --fix '**/*.scss'",
     "preview": "vite preview",
     "lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "vitest"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.1",
@@ -37,6 +38,8 @@
     "stylelint-order": "^6.0.3"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
@@ -47,13 +50,15 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "husky": "^8.0.3",
+    "jsdom": "^26.0.0",
     "postcss": "^8.4.29",
     "prettier": "^3.0.2",
     "stylelint": "^15.10.3",
     "stylelint-prettier": "^4.0.2",
     "typescript": "^5.0.2",
     "vite": "^5.4.11",
-    "vite-plugin-pwa": "^0.21.1"
+    "vite-plugin-pwa": "^0.21.1",
+    "vitest": "^2.1.8"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --fix",
